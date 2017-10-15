@@ -11,7 +11,7 @@ public class ConnectionManager {
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "toor";
 
-	private static final String CONN_STRING = "jdbc:mysql://localhost/BankJK?useSSL=false";
+	private static final String CONN_STRING = "jdbc:mysql://localhost/Bank?useSSL=false";
 
 	private Connection connection = null;
 

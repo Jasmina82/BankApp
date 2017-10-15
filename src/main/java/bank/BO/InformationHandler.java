@@ -8,6 +8,7 @@ import java.util.Map;
 import bank.DAO.AdminDAO;
 import bank.DAO.AdminDAOImplementation;
 import bank.DTO.Account;
+import bank.DTO.Admin;
 import bank.DTO.User;
 import bank.main.Inputs;
 
@@ -84,5 +85,9 @@ public class InformationHandler {
 			return pin;
 		}
 
+		public Admin getAdmin() {
+			Admin admin=adminDao.getAdmin();
+			return admin;
+		}
 
 }

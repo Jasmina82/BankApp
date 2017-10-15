@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import bank.DTO.Account;
+import bank.DTO.Admin;
 import bank.DTO.User;
 
 public class AdminDAOImplementation implements AdminDAO {
@@ -90,6 +91,39 @@ public class AdminDAOImplementation implements AdminDAO {
 				System.err.println(e);
 				return false;
 			}
+		}
+
+		@Override
+		public boolean changeAdmin(String admin, int pin) {
+			try (Statement stmt = conn.createStatement()) {
+
+				stmt.executeUpdate("UPDATE admin SET username='"+ admin + "',password=" +pin+  ";");
+				return true;
+
+			} catch (SQLException e) {
+
+				System.err.println(e);
+				return false;
+			}
+		}
+		
+		@Override
+		public Admin getAdmin() {
+			Admin admin=null;
+			try (Statement stmt = conn.createStatement();
+					ResultSet rs = stmt.executeQuery(
+							"SELECT username,password FROM admin");) {
+				rs.next();
+					admin = new Admin(rs.getString("username"),rs.getInt("password"));
+
+					
+				
+			} catch (SQLException e) {
+
+				System.err.println(e);
+			}
+			return admin;
+		
 		}
 
 

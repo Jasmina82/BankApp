@@ -4,6 +4,7 @@ CREATE SCHEMA IF NOT EXISTS bank DEFAULT CHARACTER SET utf8 ;
 USE bank ;
 DROP TABLE IF EXISTS bank.transactions;
 DROP TABLE IF EXISTS bank.client_infos ;
+DROP TABLE IF EXISTS bank.admin;
 CREATE TABLE IF NOT EXISTS bank.client_infos (
 
     accountNumber VARCHAR(20) PRIMARY KEY,
@@ -36,7 +37,13 @@ INSERT INTO client_infos    (accountNumber,balance,pinCode,firstName,lastName,id
     accountNumber VARCHAR(20),
     FOREIGN KEY (accountNumber)
         REFERENCES client_infos (accountNumber)
-);              
+);           
+CREATE TABLE IF NOT EXISTS admin(
+username VARCHAR(40) PRIMARY KEY NOT NULL,
+password INTEGER(4) NOT NULL
+);
+
+INSERT INTO  admin(username,password) VALUES ('admin',1000);
 
                 
                

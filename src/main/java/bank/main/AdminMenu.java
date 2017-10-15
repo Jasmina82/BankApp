@@ -17,7 +17,7 @@ public class AdminMenu {
 
 		int adminOption = Inputs
 				.getUserIntegerInput("1.Logged users\n2.Delete account\n3.Edit user's balance\n4.Edit user's profile"
-						+ "\n5.Create new user" + "\n6.Log out");
+						+ "\n5.Create new user" + "\n6.Change admin" + "\n7.Log out");
 
 		handleUserOption(adminOption);
 
@@ -41,7 +41,8 @@ public class AdminMenu {
 			adminBo.editProfile();break;
 		case 5:
 			adminBo.createNewUser();break;
-		case 6:
+		case 6:adminBo.changeAdmin();break;
+		case 7:
 			System.out.println("Logging out......\n");
 			App.startApp();
 			break;
@@ -53,5 +54,6 @@ public class AdminMenu {
 		}
 
 	}
+	
 
 }
