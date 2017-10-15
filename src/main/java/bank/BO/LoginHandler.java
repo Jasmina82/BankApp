@@ -1,6 +1,8 @@
 package bank.BO;
 
 import java.util.Map;
+
+import bank.DTO.Admin;
 import bank.main.AdminMenu;
 import bank.main.Inputs;
 import bank.main.UserMenu;
@@ -8,11 +10,14 @@ import bank.main.UserMenu;
 public class LoginHandler {
 	
 	static LoginHandler log=new LoginHandler();
-	InformationHandler infos = new InformationHandler();
+	static InformationHandler infos = new InformationHandler();
 	
-	//set values for admin
-	static final String ADMINS_USERNAME="admin";
-	static final int ADMINS_PIN=1000;
+	static Admin admin= infos.getAdmin();
+	
+	
+	//set values for admin,in this case username:admin pin:1000
+	static final String ADMINS_USERNAME=admin.getAccountNumber();
+	static final int ADMINS_PIN=admin.getPin();
 
 	public static void login() {
 

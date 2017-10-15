@@ -37,7 +37,7 @@ public class AdminBO {
 		AdminMenu.getAdminMenu();
 	}
 
-	// deletes user 
+	// deletes user
 	public void deleteAccount() {
 
 		String accountNumber = InputsValidator.getAccountFromPerson("Enter account for delete:");
@@ -54,7 +54,7 @@ public class AdminBO {
 		AdminMenu.getAdminMenu();
 	}
 
-	//sets new balance for chosen account
+	// sets new balance for chosen account
 	public void editBalance() {
 		Account account = getAccountForEditBalance();
 
@@ -83,7 +83,7 @@ public class AdminBO {
 		AdminMenu.getAdminMenu();
 	}
 
-	//creates new user 
+	// creates new user
 	public void createNewUser() {
 
 		Account account = infos.getNewUserInfos();
@@ -107,7 +107,7 @@ public class AdminBO {
 		return loggedUsers;
 	}
 
-	//returns account based on user's input of account number
+	// returns account based on user's input of account number
 	public Account getInputOfUsersAccount() {
 
 		String accountNumber = InputsValidator.getAccountFromPerson("Enter account:");
@@ -128,6 +128,24 @@ public class AdminBO {
 		double balance = Inputs.getUserDoubleInput("Enter new balance:");
 		account.setBalance(balance);
 		return account;
+	}
+
+	// change admin's username and pin
+	public boolean changeAdmin() {
+		String username = Inputs.getUserInput("Enter username:");
+		int pin = InputsValidator.getPinInput("Enter pin ( XXXX ) :");
+
+		if (adminDao.changeAdmin(username, pin)) {
+			System.out.println("Admin changed! Username: " + username + "; pin: " + pin);
+			AdminMenu.getAdminMenu();
+			return true;
+		}
+
+		else {
+			System.out.println("Something went wrong!");
+			AdminMenu.getAdminMenu();
+			return false;
+		}
 	}
 
 }
